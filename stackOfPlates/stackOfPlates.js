@@ -25,6 +25,10 @@ class SetOfStacks {
   }
 
   get size() {
+    return this.stacks.length;
+  }
+
+  get length() {
     return this.array.length;
   }
 }
