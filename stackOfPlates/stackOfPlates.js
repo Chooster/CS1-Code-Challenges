@@ -5,3 +5,26 @@
  * SetOfStacks.push() and SetOfStacks.pop() should behave identically to a single stack
  * (that is, pop( ) should return the same values as it would if there were just a single stack).
  */
+
+class SetOfStacks {
+  constructor(limit = 10) {
+    this.limit = limit;
+    this.stacks = [];
+    this.array = [];
+  }
+  add(element) {
+    if (this.array.length >= this.limit) {
+      this.stacks.push(this.array);
+      this.array = [];
+    }
+    return this.array.push(element);
+  }
+
+  remove() {
+    return this.array.pop();
+  }
+
+  get size() {
+    return this.array.length;
+  }
+}
