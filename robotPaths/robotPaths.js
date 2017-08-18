@@ -30,3 +30,32 @@ const makeBoard = (n) => {
 };
 
 // write your code here for t
+const robotPath = (board) => {
+  let row  = 0;
+  let col = 0;
+  board.toggle(row, col);
+  let steps = 0;
+  while ((row < (board.length - 1)) || (col < (board.length - 1))) {
+    if (((row - 1) >= 0) && !board.hasBeenVisited(row-1, col)) { // up
+      row--;
+      steps++;
+      board.toggle(row, col);
+    }
+    else if (((row + 1) < board.length) && !board.hasBeenVisited(row + 1, col)) { //down
+      row++;
+      steps++;
+      board.toggle(row, col);
+    }
+    else if (((col - 1) >= 0) && !board.hasBeenVisited(row, col - 1)) { // left
+      col--;
+      steps++;
+      board.toggle(row, col);
+    }
+    else if (((col + 1) < board.length) && !board.hasBeenVisited(row, col + 1)) { // right
+      col++;
+      steps++;
+      board.toggle(row, col);
+    }
+  }
+  return steps;
+};
