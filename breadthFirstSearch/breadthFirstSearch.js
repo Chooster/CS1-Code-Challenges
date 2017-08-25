@@ -21,14 +21,13 @@ const breadthFirstSearch = (tree, value) => {
 
   const check = (treeObj) => {
     Object.keys(treeObj).forEach((prop) => {
-      if (typeof treeObj[prop] === 'object') check(treeObj[prop]);
       queue.push(treeObj[prop]);
     });
   };
   check(tree);
-  
   while (queue.length > 0) {
-    if (queue[0] === value) return true;
+    if (typeof queue[0] === 'object') check(queue[0]);
+    else if (queue[0] === value) return true;
     queue.shift();
   }
   return false;
