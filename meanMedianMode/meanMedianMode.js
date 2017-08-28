@@ -20,12 +20,12 @@ const averages = (arr) => {
   });
   Object.keys(mode).forEach((prop) => {
     if (mode[prop] > 1 && mode[prop] > most[1]) {
-      most[0] = prop;
+      most[0] = parseInt(prop);
       most[1] = mode[prop];
     }
   });
   avg.mean = sum / arr.length;
   avg.median = arr.length % 2 === 0 ? (arr[arr.length / 2] + arr[(arr.length / 2) - 1]) / 2 : arr[Math.floor(arr.length / 2)];
-  avg.mode = most[1] > 0 ? parseInt(most[0]) : "No Mode";
+  avg.mode = most[1] > 0 ? most[0] : "No Mode";
   return avg;
 };
